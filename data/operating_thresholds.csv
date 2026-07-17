@@ -1,13 +1,13 @@
 model,set,operating_point,threshold,sensitivity,specificity,ppv,npv,alerts_per_true_positive
-CatBoost,Internal,90% sensitivity,0.2409,0.9022,0.5164,0.0528,0.9944,18.9
-CatBoost,Internal,80% sensitivity,0.3376,0.8016,0.6831,0.0703,0.9914,14.2
-CatBoost,Internal,Youden index,0.4047,0.7582,0.7615,0.0868,0.9906,11.5
-CatBoost,External,90% sensitivity,0.1779,0.9002,0.3938,0.0293,0.9949,34.1
-CatBoost,External,80% sensitivity,0.2788,0.8005,0.6034,0.0395,0.9933,25.3
-CatBoost,External,Youden index,0.3911,0.7126,0.7513,0.0551,0.9923,18.1
-XGBoost,Internal,90% sensitivity,0.2015,0.9022,0.4659,0.0481,0.9938,20.8
-XGBoost,Internal,80% sensitivity,0.3372,0.8016,0.6912,0.072,0.9915,13.9
-XGBoost,Internal,Youden index,0.5277,0.6495,0.8537,0.1172,0.9879,8.5
-XGBoost,External,90% sensitivity,0.1545,0.9002,0.374,0.0284,0.9946,35.2
-XGBoost,External,80% sensitivity,0.2658,0.8005,0.6037,0.0395,0.9933,25.3
-XGBoost,External,Youden index,0.5057,0.6164,0.8536,0.0789,0.9909,12.7
+CatBoost,Internal,90% sensitivity,0.0126,0.9158,0.4436,0.0469,0.9944,21.3
+CatBoost,Internal,80% sensitivity,0.0152,0.8016,0.6993,0.0738,0.9916,13.5
+CatBoost,Internal,Youden index,0.0353,0.7337,0.7753,0.0889,0.9898,11.2
+CatBoost,External,90% sensitivity,0.0058,0.9276,0.3038,0.0264,0.9952,37.9
+CatBoost,External,80% sensitivity,0.0126,0.8658,0.4746,0.0325,0.9943,30.8
+CatBoost,External,Youden index,0.0353,0.6639,0.7896,0.0603,0.9914,16.6
+XGBoost,Internal,90% sensitivity,0.0081,0.9076,0.4745,0.0491,0.9942,20.4
+XGBoost,Internal,80% sensitivity,0.0161,0.8288,0.6405,0.0645,0.9921,15.5
+XGBoost,Internal,Youden index,0.0311,0.7609,0.737,0.0796,0.9904,12.6
+XGBoost,External,90% sensitivity,0.0067,0.9192,0.33,0.0272,0.995,36.8
+XGBoost,External,80% sensitivity,0.0148,0.8171,0.5647,0.0368,0.9935,27.2
+XGBoost,External,Youden index,0.0324,0.6306,0.8284,0.0696,0.991,14.4
