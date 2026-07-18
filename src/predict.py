@@ -68,15 +68,16 @@ class DeteriorationModel:
         raw = self.model.predict_proba(Xn)[:, 1]
         return self.calibrator.transform(raw)
 
-    def predict_tier(self, df: pd.DataFrame, thresholds_csv: str = None) -> pd.DataFrame:
-        """Return calibrated risk plus a risk tier based on operating_thresholds.csv."""
+    # Risk-tier cutoffs on the calibrated 48-hour risk (match the manuscript).
+    # Low: < 1% ; Intermediate: 1% to < 10% ; High: >= 10%.
+    LOW_CUT = 0.01
+    HIGH_CUT = 0.10
+
+    def predict_tier(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Return calibrated risk plus a risk tier (Low / Intermediate / High)."""
         risk = self.predict_risk(df)
-        thr_path = Path(thresholds_csv) if thresholds_csv else ROOT / "data" / "operating_thresholds.csv"
-        thr = pd.read_csv(thr_path)
-        row = thr[(thr.model.str.lower() == self.model_name) & (thr.set == "External")]
-        t90 = float(row[row.operating_point == "90% sensitivity"].threshold.iloc[0])
-        t80 = float(row[row.operating_point == "80% sensitivity"].threshold.iloc[0])
-        tier = np.where(risk >= t80, "High", np.where(risk >= t90, "Intermediate", "Low"))
+        tier = np.where(risk >= self.HIGH_CUT, "High",
+                        np.where(risk >= self.LOW_CUT, "Intermediate", "Low"))
         return pd.DataFrame({"calibrated_risk": risk, "risk_tier": tier})
 
 

@@ -62,15 +62,19 @@ through `src/predict.py` (or the saved pipeline) so that preprocessing matches t
 
 ## Risk tiers
 
-Tiers in `predict_tier` are derived from the external-cohort operating points in
-`data/operating_thresholds.csv`:
+`predict_tier` assigns each patient to a tier based on the calibrated 48-hour risk,
+using the same cutoffs as the manuscript:
 
-- **High**: risk ≥ 80%-sensitivity threshold
-- **Intermediate**: risk ≥ 90%-sensitivity threshold
-- **Low**: below the 90%-sensitivity threshold
+- **High**: calibrated risk ≥ 10%
+- **Intermediate**: calibrated risk 1% to < 10%
+- **Low**: calibrated risk < 1%
 
-At ~2% prevalence, high sensitivity entails a substantial false-alert burden (see
-`operating_thresholds.csv`, *alerts per true positive*); thresholds should be chosen locally.
+In the external validation cohort these tiers contained 2.5%, 50.8%, and 46.8% of patients,
+with observed 48-hour deterioration rates of 20.7%, 2.4%, and 0.57%, respectively (the high-risk
+tier is enriched roughly 10-fold over the overall event rate). At ~2% prevalence a low predicted
+risk is reliable for ruling out deterioration, whereas any alerting threshold carries a
+false-alert burden (see `data/operating_thresholds.csv`, *alerts per true positive*); the
+cutoffs can be adjusted locally to the desired sensitivity and alert load.
 
 ## Installation
 
