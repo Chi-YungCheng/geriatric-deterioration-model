@@ -1,7 +1,7 @@
 # Early Prediction of Clinical Deterioration in Older Adults With Suspected Infection
 
 Trained machine-learning models and inference code accompanying the manuscript
-*"Early Prediction of Clinical Deterioration in Older Adults With Sepsis Admitted From the
+*"Early Prediction of Clinical Deterioration in Older Adults With Suspected Infection Admitted From the
 Emergency Department to General Wards: A Multicenter Machine Learning Study."*
 
 The models predict the risk of **early clinical deterioration within 48 hours** (a composite of
@@ -34,10 +34,10 @@ requirements.txt
 
 | Model | Internal AUROC | External AUROC | External AUPRC |
 |-------|:--------------:|:--------------:|:--------------:|
-| CatBoost | 0.828 | 0.796 | 0.194 |
-| XGBoost  | 0.827 | 0.798 | 0.198 |
+| CatBoost | 0.851 | 0.829 | 0.134 |
+| XGBoost  | 0.842 | 0.822 | 0.119 |
 
-External event rate ≈ 2%; AUPRC no-skill baseline ≈ 0.02. Probabilities are isotonic-calibrated
+External event rate ≈ 1.7%; AUPRC no-skill baseline ≈ 0.017. Probabilities are isotonic-calibrated
 on a held-out validation set.
 
 ## Usage
@@ -69,9 +69,9 @@ using the same cutoffs as the manuscript:
 - **Intermediate**: calibrated risk 1% to < 10%
 - **Low**: calibrated risk < 1%
 
-In the external validation cohort these tiers contained 2.5%, 50.8%, and 46.8% of patients,
-with observed 48-hour deterioration rates of 20.7%, 2.4%, and 0.57%, respectively (the high-risk
-tier is enriched roughly 10-fold over the overall event rate). At ~2% prevalence a low predicted
+In the external validation cohort these tiers contained 5.3%, 42.9%, and 51.8% of patients,
+with observed 48-hour deterioration rates of 12.1%, 1.95%, and 0.34%, respectively (the high-risk
+tier is enriched roughly 7-fold over the overall event rate). At ~1.7% prevalence a low predicted
 risk is reliable for ruling out deterioration, whereas any alerting threshold carries a
 false-alert burden (see `data/operating_thresholds.csv`, *alerts per true positive*); the
 cutoffs can be adjusted locally to the desired sensitivity and alert load.
